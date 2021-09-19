@@ -16,6 +16,10 @@ const client = new ApolloClient({
         name
         countries {
           name
+          emoji
+          languages {
+            name
+          }
         }
       }
     }

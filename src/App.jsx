@@ -9,13 +9,11 @@ import { generateMockedData } from "./services/generator";
 
 function App() {
   const { loading, data } = useQuery(graphQl.CountriesQueryDocument);
+  console.log(data)
   return (
     <>
       {loading ? (
-        <Backdrop
-          sx={{ color: "#fff", zIndex: (theme) => theme.zIndex.drawer + 1 }}
-          open
-        >
+        <Backdrop sx={{ color: "#fff", zIndex: (theme) => theme.zIndex.drawer + 1 }} open>
           <CircularProgress color="inherit" />
         </Backdrop>
       ) : (

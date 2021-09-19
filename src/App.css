@@ -18,6 +18,7 @@ h6 {
   font-weight: 400;
   padding: 3px 10px;
 }
+
 ul,
 li {
   position: relative;
@@ -41,7 +42,7 @@ li::before {
 
 li::after {
   border-left: 1px dashed #333;
-  height: 178%;
+  height: 72px;
   width: 0px;
   top: -16px;
   left: -15px;
