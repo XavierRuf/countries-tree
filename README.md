@@ -1,6 +1,5 @@
-# Getting Started with Create React App
-
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# Subtask 5: 
+*Result of function generator you can see in the console
 
 ## Available Scripts
 
