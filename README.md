@@ -1,5 +1,6 @@
 # Subtask 5: 
-*Result of function generator you can see in the console
+*Result of function generator you can see in the console. 
+For fake-data in the function, i using faker.js
 
 ## Available Scripts
 
