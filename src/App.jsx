@@ -9,7 +9,6 @@ import { generateMockedData } from "./services/generator";
 
 function App() {
   const { loading, data } = useQuery(graphQl.CountriesQueryDocument);
-  console.log(data)
   return (
     <>
       {loading ? (
