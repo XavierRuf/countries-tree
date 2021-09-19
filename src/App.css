@@ -15,8 +15,13 @@ h6 {
 }
 
 .countries__name {
+  cursor: pointer;
   font-weight: 400;
   padding: 3px 10px;
+}
+
+span {
+  margin-left: 10px;
 }
 
 ul,

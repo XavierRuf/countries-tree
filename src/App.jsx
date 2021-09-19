@@ -16,7 +16,7 @@ function App() {
           <CircularProgress color="inherit" />
         </Backdrop>
       ) : (
-        <div className="App" style={{ width: "700px", margin: "0 15px" }}>
+        <div className="App" style={{ width: "50%", margin: "0 15px" }}>
           {data.continents.map((item) => (
             <Countries item={item} key={item.name} />
           ))}

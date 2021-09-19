@@ -2,11 +2,11 @@ import React, { useState } from "react";
 
 import "../App.css";
 
-const Countries = ({ item, languages }) => {
+const Countries = ({ item }) => {
   const [showItem, setShowItem] = useState(false);
   const haveChildren = item.countries && item.countries.length > 0;
+  const haveLang = item.languages && item.languages.length > 0;
   const changeVisibility = () => setShowItem((prev) => !prev);
-
   return (
     <>
       <div className="countries">
@@ -24,7 +24,7 @@ const Countries = ({ item, languages }) => {
           {item.emoji}
           {item.name}
         </h2>
-        <span>{languages}</span>
+        {haveLang && <span>{item.languages[0].name}</span>}
       </div>
 
       {haveChildren && showItem && (
@@ -33,9 +33,6 @@ const Countries = ({ item, languages }) => {
             <li key={items.name}>
               <Countries
                 item={items}
-                languages={
-                  items.languages.length > 0 ? ` lang: ${items.languages[0].name}` : ""
-                }
               />
             </li>
           ))}
