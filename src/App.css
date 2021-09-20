@@ -47,7 +47,7 @@ li::before {
 
 li::after {
   border-left: 1px dashed #333;
-  height: 72px;
+  height: 120%;
   width: 0px;
   top: -16px;
   left: -15px;
