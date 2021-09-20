@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React, { useState } from "react";
 import Countries from "./components/Countries";
 import Backdrop from "@mui/material/Backdrop";
 import CircularProgress from "@mui/material/CircularProgress";
@@ -13,24 +13,37 @@ function App() {
   const { loading, data } = useQuery(graphQl.CountriesQueryDocument);
 
   const [callbacks, setCallbacks] = useState([]);
-  const registerCallback = (callback) => setCallbacks(prev => [...prev, callback]);
+  const registerCallback = (callback) =>
+    setCallbacks((prev) => [...prev, callback]);
+  const removeCallback = (callback) =>
+    setCallbacks((prev) => {
+      const index = prev.indexOf(callback);
+      if (index > -1) {
+        prev.splice(index, 1);
+        return prev;
+      }
+    });
 
   return (
     <>
       {loading ? (
-        <Backdrop sx={{ color: "#fff", zIndex: (theme) => theme.zIndex.drawer + 1 }} open>
+        <Backdrop
+          sx={{ color: "#fff", zIndex: (theme) => theme.zIndex.drawer + 1 }}
+          open
+        >
           <CircularProgress color="inherit" />
         </Backdrop>
       ) : (
-        <TreeContext.Provider value={{ callbacks, registerCallback }}>
+        <TreeContext.Provider value={{ callbacks, registerCallback, removeCallback }}>
           <div className="App" style={{ width: "50%", margin: "0 15px" }}>
-          {data.continents.map((item) => <Countries item={item} key={item.name} /> )}
-        </div>
+            {data.continents.map((item) => (
+              <Countries item={item} key={item.name} />
+            ))}
+          </div>
         </TreeContext.Provider>
       )}
     </>
   );
-
 }
 
 console.log(generateMockedData({ depth: 2, childrenCount: 2 }));

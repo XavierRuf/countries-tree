@@ -1,5 +1,5 @@
 import React, { useState, useContext, useEffect } from "react";
-import {TreeContext} from "../App";
+import { TreeContext } from "../App";
 
 import "../App.css";
 
@@ -9,11 +9,17 @@ const Countries = ({ item }) => {
   const haveLang = item.languages && item.languages.length > 0;
   const changeVisibility = () => setShowItem((prev) => !prev);
 
-  const {registerCallback, callbacks} = useContext(TreeContext);
+  const { registerCallback, removeCallback, callbacks } = useContext(TreeContext);
+  const closeItem = () => setShowItem(false);
 
   useEffect(() => {
-    if (haveChildren) registerCallback(() => setShowItem(false));
-  }, [])
+    if (haveChildren) {
+      registerCallback(closeItem);
+      return () => {
+        removeCallback(closeItem);
+      };
+    }
+  }, []);
 
   return (
     <>
@@ -38,10 +44,14 @@ const Countries = ({ item }) => {
       {haveChildren && showItem && (
         <ul>
           {item.countries.map((items, index) => (
-            <li key={items.name} onClick={() => index === item.countries.length - 1 && callbacks.forEach(c => c())}>
-              <Countries
-                item={items}
-              />
+            <li
+              key={items.name}
+              onClick={() =>
+                index === item.countries.length - 1 &&
+                callbacks.forEach((c) => c())
+              }
+            >
+              <Countries item={items} />
             </li>
           ))}
         </ul>
