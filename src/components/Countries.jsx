@@ -13,7 +13,7 @@ const Countries = ({ item }) => {
 
   useEffect(() => {
     if (haveChildren) registerCallback(() => setShowItem(false));
-  }, [haveChildren, registerCallback])
+  }, [])
 
   return (
     <>
